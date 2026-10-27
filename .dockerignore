@@ -1,0 +1,13 @@
+# Keep the cloud image small: only what the sidecar needs at runtime.
+.git
+node_modules
+website
+docs
+output
+qa
+test
+dev
+scripts
+src-tauri/*
+!src-tauri/tauri.conf.json
+**/*.log

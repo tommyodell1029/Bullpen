@@ -81,7 +81,7 @@ function noteFailure(ip) {
 function isHttps(req) { return String(req.headers['x-forwarded-proto'] || '').split(',')[0].trim() === 'https'; }
 
 const LOGIN_PAGE = (msg) => `<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Sign in</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Bullpen · Sign in</title>
 <style>
   :root{--bg:#0f1115;--card:#171a21;--text:#e8e6e1;--muted:#9a9890;--accent:#e0a33a;--err:#e5736b}
   @media (prefers-color-scheme: light){:root{--bg:#f4f2ee;--card:#fff;--text:#1d1c1a;--muted:#6b6862;--accent:#b5761a;--err:#b3362c}}
@@ -94,7 +94,7 @@ const LOGIN_PAGE = (msg) => `<!doctype html><html lang="en"><head><meta charset=
   .err{color:var(--err)}
 </style></head><body>
 <form method="post" action="/__gateway/login">
-  <h1>Station sign-in</h1><p>Enter the station password.</p>
+  <h1>Bullpen</h1><p>Enter your station password.</p>
   ${msg ? `<p class="err">${msg}</p>` : ''}
   <input type="password" name="password" autocomplete="current-password" autofocus required>
   <button type="submit">Sign in</button>

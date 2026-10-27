@@ -1,0 +1,22 @@
+# Render Blueprint — deploys the Bullpen station as one always-on Docker service with a persistent disk.
+# In Render: New + → Blueprint → pick this repo. It will ask for GATEWAY_PASSWORD.
+services:
+  - type: web
+    name: bullpen
+    runtime: docker
+    dockerfilePath: ./cloud/Dockerfile
+    dockerContext: .
+    plan: standard            # 1 CPU / 2 GB RAM — the 512 MB starter plan is too small for the browser + agents
+    region: virginia
+    numInstances: 1
+    healthCheckPath: /__gateway/health
+    autoDeploy: true
+    envVars:
+      - key: GATEWAY_PASSWORD
+        sync: false           # Render prompts you for it; never committed to the repo
+      - key: DATA_DIR
+        value: /data
+    disk:
+      name: bullpen-data
+      mountPath: /data
+      sizeGB: 10
